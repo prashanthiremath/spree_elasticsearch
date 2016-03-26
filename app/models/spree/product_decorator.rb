@@ -100,17 +100,17 @@ module Spree
 
         sorting = case @sorting
         when 'name_asc'
-          [ { 'name.untouched' => { order: 'asc', ignore_unmapped: true  } }, { price: { order: 'asc', ignore_unmapped: true } }, '_score' ]
+          [ { 'name' => { order: 'asc', ignore_unmapped: true  } }, { price: { order: 'asc', ignore_unmapped: true } }, '_score' ]
         when 'name_desc'
-          [ { 'name.untouched' => { order: 'desc', ignore_unmapped: true } }, { price: { order: 'asc', ignore_unmapped: true } }, '_score' ]
+          [ { 'name' => { order: 'desc', ignore_unmapped: true } }, { price: { order: 'asc', ignore_unmapped: true } }, '_score' ]
         when 'price_asc'
-          [ { 'price' => { order: 'asc', ignore_unmapped: true } }, { 'name.untouched' => { order: 'asc', ignore_unmapped: true } }, '_score' ]
+          [ { 'price' => { order: 'asc', ignore_unmapped: true } }, { 'name' => { order: 'asc', ignore_unmapped: true } }, '_score' ]
         when 'price_desc'
-          [ { 'price' => { order: 'desc', ignore_unmapped: true } }, { 'name.untouched' => { order: 'asc', ignore_unmapped: true } }, '_score' ]
+          [ { 'price' => { order: 'desc', ignore_unmapped: true } }, { 'name' => { order: 'asc', ignore_unmapped: true } }, '_score' ]
         when 'score'
-          [ '_score', { 'name.untouched' => { order: 'asc', ignore_unmapped: true } }, { price: { order: 'asc', ignore_unmapped: true } } ]
+          [ '_score', { 'name' => { order: 'asc', ignore_unmapped: true } }, { price: { order: 'asc', ignore_unmapped: true } } ]
         else
-          [ { 'name.untouched' => { order: 'asc', ignore_unmapped: true} }, { price: { order: 'asc', ignore_unmapped: true } }, '_score' ]
+          [ { 'name' => { order: 'asc', ignore_unmapped: true} }, { price: { order: 'asc', ignore_unmapped: true } }, '_score' ]
         end
 
         # aggregations
