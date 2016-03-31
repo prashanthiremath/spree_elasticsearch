@@ -98,6 +98,7 @@ module Spree
           end
         end
 
+        Rails.logger.info "SORTING #{@sorting}"
         sorting = case @sorting
         when 'name_asc'
           [ { 'name' => { order: 'asc', ignore_unmapped: true  } }, { price: { order: 'asc', ignore_unmapped: true } }, '_score' ]
