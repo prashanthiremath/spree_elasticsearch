@@ -99,20 +99,21 @@ module Spree
         end
 
         Rails.logger.info "SORTING #{@sorting}"
-        sorting = case @sorting
+         sorting = case @sorting
         when 'name_asc'
-          [ { 'name' => { order: 'asc', ignore_unmapped: true  } }, { price: { order: 'asc', ignore_unmapped: true } }, '_score' ]
+          [ { 'name.untouched' => { order: 'asc' } }, { price: { order: 'asc' } }, '_score' ]
         when 'name_desc'
-          [ { 'name' => { order: 'desc', ignore_unmapped: true } }, { price: { order: 'asc', ignore_unmapped: true } }, '_score' ]
+          [ { 'name.untouched' => { order: 'desc' } }, { price: { order: 'asc' } }, '_score' ]
         when 'price_asc'
-          [ { 'price' => { order: 'asc', ignore_unmapped: true } }, { 'name' => { order: 'asc', ignore_unmapped: true } }, '_score' ]
+          [ { 'price' => { order: 'asc' } }, { 'name.untouched' => { order: 'asc' } }, '_score' ]
         when 'price_desc'
-          [ { 'price' => { order: 'desc', ignore_unmapped: true } }, { 'name' => { order: 'asc', ignore_unmapped: true } }, '_score' ]
+          [ { 'price' => { order: 'desc' } }, { 'name.untouched' => { order: 'asc' } }, '_score' ]
         when 'score'
-          [ '_score', { 'name' => { order: 'asc', ignore_unmapped: true } }, { price: { order: 'asc', ignore_unmapped: true } } ]
+          [ '_score', { 'name.untouched' => { order: 'asc' } }, { price: { order: 'asc' } } ]
         else
-          [ { 'name' => { order: 'asc', ignore_unmapped: true} }, { price: { order: 'asc', ignore_unmapped: true } }, '_score' ]
+          [ { 'name.untouched' => { order: 'asc' } }, { price: { order: 'asc' } }, '_score' ]
         end
+
 
         # aggregations
         aggregations = {
