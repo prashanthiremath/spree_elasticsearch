@@ -111,7 +111,7 @@ module Spree
         when 'score'
           [ '_score', { 'name.untouched' => { order: 'asc' } }, { price: { order: 'asc' } } ]
         else
-          [ { 'name.untouched' => { order: 'asc' } }, { price: { order: 'asc' } }, '_score' ]
+          [ { 'name.untouched' => { order: 'asc', "ignore_unmapped" : true } }, { price: { order: 'asc', "ignore_unmapped" : true } }, '_score' ]
         end
 
 
